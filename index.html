@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Geometry Swordplay | BGS Master Sheet & Curriculum</title>
+    <title>Basic Geometry Swordplay | Master Sheet & Curriculum</title>
     <style>
         :root {
             --bg-color: #0b0b0c;
@@ -11,11 +11,9 @@
             --border-color: #27272a;
             --text-primary: #f4f4f5;
             --text-secondary: #a1a1aa;
-            --crimson: #dc2626;
-            --crimson-hover: #b91c1c;
-            --white-tab: #ffffff;
-            --grey-tab: #71717a;
-            --olive-tab: #3f6212;
+            --accent-color: #dc2626;
+            --accent-hover: #b91c1c;
+            --card-bg: rgba(20, 20, 22, 0.6);
         }
 
         * {
@@ -29,39 +27,276 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
+            padding: 2rem 5%;
         }
 
-        /* Navigation */
         header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
+            align-items: flex-end;
             border-bottom: 1px solid var(--border-color);
-            background-color: rgba(11, 11, 12, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .logo {
-            font-weight: 900;
-            letter-spacing: 3px;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-        }
-
-        .logo span {
-            color: var(--crimson);
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
+        h1 {
+            font-size: 2rem;
             text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .tab-btn {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.75rem 1.25rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        p.section-intro {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        ul, ol {
+            padding-left: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>Basic Geometry Swordplay</h1>
+        </div>
+        <div class="subtitle">System Master Sheet & Curriculum Mockup</div>
+    </header>
+
+    <!-- Tab Navigation Bar -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(event, 'vectors')">Vectors & Chambers</button>
+        <button class="tab-btn" onclick="switchTab(event, 'flows')">Flow Lines</button>
+        <button class="tab-btn" onclick="switchTab(event, 'drills')">Partner Drills</button>
+        <button class="tab-btn" onclick="switchTab(event, 'curriculum')">Rank Curriculum</button>
+    </div>
+
+    <!-- Section 1: Vectors & Chambers -->
+    <div id="vectors" class="content-section active">
+        <h2>Foundational Vectors (Striking Angles)</h2>
+        <p class="section-intro">All strikes in BGS follow strict geometric paths ensuring perfect edge alignment and follow-through.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Vectors 1 & 2</h3>
+                <p><strong>Diagonal Descending Cuts (45°):</strong> Slash from shoulder to opposite hip. Primary engagement paths.</p>
+            </div>
+            <div class="card">
+                <h3>Vectors 3 & 4</h3>
+                <p><strong>Horizontal Sweeps (90°):</strong> Parallel midsection cuts driven by explosive hip rotation.</p>
+            </div>
+            <div class="card">
+                <h3>Vectors 5 & 6</h3>
+                <p><strong>Diagonal Ascending Cuts (135°):</strong> Low-line strikes targeting wrists, flanks, and floating ribs.</p>
+            </div>
+            <div class="card">
+                <h3>Vectors 7 & 8</h3>
+                <p><strong>Vertical Axes (0° / 180°):</strong> Direct overhead cleave and linear centerline thrust.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Flow Lines -->
+    <div id="flows" class="content-section">
+        <h2>Kinetic Flow Lines</h2>
+        <p class="section-intro">Transitions eliminate dead weight by using the momentum of the previous strike to chamber the next.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>The Figure-8 Loop</h3>
+                <p>Continuous looping motion utilizing centrifugal force to maintain high-velocity threat presence without re-chambering.</p>
+            </div>
+            <div class="card">
+                <h3>The Pendulum Shift</h3>
+                <p>Reversing cutting direction mid-arc using wrist articulation and sudden footwork changes to bypass guards.</p>
+            </div>
+            <div class="card">
+                <h3>The Dead-Zone Pivot</h3>
+                <p>Stepping off the line of attack while letting the blade rotate through the opponent's blind sector.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Partner Drills -->
+    <div id="drills" class="content-section">
+        <h2>Partner Calibration Drills</h2>
+        <p class="section-intro">Structured live-feedback exercises designed to test structural integrity and reaction timing.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>The Deflection Triangle</h3>
+                <p>Partner throws predictable vector sequences; defender utilizes minimum-angle deflection to pass force past the shoulder.</p>
+            </div>
+            <div class="card">
+                <h3>Distance Tagging</h3>
+                <p>Controlled sparring focusing strictly on maintaining the optimal outer radius threshold without over-committing.</p>
+            </div>
+            <div class="card">
+                <h3>Blind Vector Test</h3>
+                <p>Defender reacts to auditory or tactile cues, executing pre-programmed geometric parries without visual tracking.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: Rank Curriculum -->
+    <div id="curriculum" class="content-section">
+        <h2>BGS Belt & Rank Standards</h2>
+        <p class="section-intro">The structured matrix required to progress through the BGS laboratory system.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3><span class="highlight">White</span> — Tier 1: Mechanics</h3>
+                <p>Mastery of solo forms, 8-point vector tracking, and clean linear/diagonal footwork mechanics.</p>
+            </div>
+            <div class="card">
+                <h3><span class="highlight">Grey</span> — Tier 2: Contact</h3>
+                <p>Introduction to weapon-on-weapon impact, kinetic deflection, and 90-second continuous pressure drills.</p>
+            </div>
+            <div class="card">
+                <h3><span class="highlight">Olive</span> — Tier 3: Tactics</h3>
+                <p>Compound attack interception, weapon mismatch adaptation, and technical sparring integration.</p>
+            </div>
+            <div class="card">
+                <h3><span class="highlight">Crimson</span> — Tier 4: Systems Master</h3>
+                <p>Absolute spatial intuition under maximum pressure. Passing the Asymmetric Gauntlet gate check.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Basic Geometry Swordplay. All rights reserved. Step into the lab.
+    </footer>
+
+    <!-- Interactive Script for Tab Switching -->
+    <script>
+        function switchTab(evt, tabName) {
+            // Hide all content sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show current target section and add active class to clicked button
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>            text-transform: uppercase;
             letter-spacing: 1.5px;
             transition: color 0.2s;
         }
