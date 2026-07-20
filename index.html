@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Geometry Swordplay | BGS Laboratory</title>
+    <style>
+        :root {
+            --bg-color: #0b0b0c;
+            --surface-color: #141416;
+            --border-color: #27272a;
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --crimson: #dc2626;
+            --crimson-hover: #b91c1c;
+            --white-tab: #ffffff;
+            --grey-tab: #71717a;
+            --olive-tab: #3f6212;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(11, 11, 12, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 900;
+            letter-spacing: 3px;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            color: var(--crimson);
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-primary);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--crimson);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--crimson);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--crimson-hover);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 4rem;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--crimson);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Interactive Tier Accordion / Matrix Ranks */
+        .rank-row {
+            display: flex;
+            align-items: center;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            justify-content: space-between;
+            transition: border-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .rank-row:hover {
+            border-color: var(--crimson);
+        }
+
+        .rank-info h4 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.2rem;
+        }
+
+        .rank-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            width: 40px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .badge.white { background-color: var(--white-tab); }
+        .badge.grey { background-color: var(--grey-tab); }
+        .badge.olive { background-color: var(--olive-tab); }
+        .badge.crimson { background-color: var(--crimson); }
+
+        /* Intake Modal / Form Styling */
+        .intake-container {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.85rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--crimson);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .checkbox-group input {
+            margin-top: 0.3rem;
+            width: auto;
+        }
+
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5%;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero { padding: 4rem 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">BGS<span>.LAB</span></div>
+        <nav>
+            <a href="#hero" class="active">Overview</a>
+            <a href="#system">The System</a>
+            <a href="#matrix">Ranks</a>
+            <a href="#code">Code</a>
+            <a href="#trial">Intake</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1>The blade <br><span>doesn't lie.</span></h1>
+            <p>No ancient mystic traditions. No wasted movement. Basic Geometry Swordplay strips away dogma and isolates the raw physics of steel: angles, momentum, and timing.</p>
+            <a href="#trial" class="btn">Enter the Laboratory</a>
+        </div>
+    </section>
+
+    <!-- The Foundation Section -->
+    <section id="system">
+        <div class="container">
+            <h2 class="section-title">The Foundation</h2>
+            <p class="section-desc">Combat is a spatial equation. We optimize your structure to ensure absolute mechanical efficiency.</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Form Over Force</h3>
+                    <p>Power originates from skeletal alignment and geometric leverage rather than brute muscle tension. Structure always precedes speed.</p>
+                </div>
+                <div class="card">
+                    <h3>Dynamic Deflection</h3>
+                    <p>We do not build rigid walls to stop oncoming momentum. We leverage active angles to split vectors and redirect kinetic force cleanly past us.</p>
+                </div>
+                <div class="card">
+                    <h3>Economy of Motion</h3>
+                    <p>In combat, a straight line is a weapon. We eliminate telegraphic wind-ups and wasted inches to strike with absolute computational precision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Matrix Ranks Section -->
+    <section id="matrix">
+        <div class="container">
+            <h2 class="section-title">The Matrix Ranks</h2>
+            <p class="section-desc">Progress tracked systematically through modular tactical belt identifiers and rigorous gate checks.</p>
+
+            <div class="rank-row">
+                <div class="rank-info">
+                    <h4>Tier 1: Mechanics</h4>
+                    <p>Focus on solo forms, air-tracking vectors, and baseline footwork layout.</p>
+                </div>
+                <div class="badge white"></div>
+            </div>
+            <div class="rank-row">
+                <div class="rank-info">
+                    <h4>Tier 2: Contact</h4>
+                    <p>Introduction to distance management, weapon-on-weapon impact, and kinetic deflection.</p>
+                </div>
+                <div class="badge grey"></div>
+            </div>
+            <div class="rank-row">
+                <div class="rank-info">
+                    <h4>Tier 3: Tactics</h4>
+                    <p>Advanced multi-directional threat profiles and medium-speed technical engagement.</p>
+                </div>
+                <div class="badge olive"></div>
+            </div>
+            <div class="rank-row">
+                <div class="rank-info">
+                    <h4>Tier 4: Systems Master (Gate Check: Blind Vector & Asymmetric Gauntlet)</h4>
+                    <p>Full operational freedom, competitive sparring, and high-speed live pressure testing.</p>
+                </div>
+                <div class="badge crimson"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code of the Floor -->
+    <section id="code">
+        <div class="container">
+            <h2 class="section-title">Code of the Floor</h2>
+            <p class="section-desc">Strict operational boundaries to maintain intensity, structure, and physical safety.</p>
+
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Check the Ego</h3>
+                    <p>Your belt rank will not deflect a real vector. If you are here to posture, you are in the wrong room. If you are here to debug your guard, you are home.</p>
+                </div>
+                <div class="card">
+                    <h3>Clean Engagement</h3>
+                    <p>We fight honorably because chaos is loud enough on its own. Give your partner an honest read, accept clean hits without complaint, and protect your training partner's safety above your own desire to win.</p>
+                </div>
+                <div class="card">
+                    <h3>Muzzle Control</h3>
+                    <p>Treat every training tool with respect. Never point a live vector or tip toward anyone off-mat or un-geared. Keep lines down when instructors speak.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- High-Intent Trial / Intake Section -->
+    <section id="trial">
+        <div class="container">
+            <h2 class="section-title">Laboratory Access</h2>
+            <p class="section-desc">We vet applicants to ensure alignment with our training philosophy. Submit your details to request an entry evaluation.</p>
+
+            <div class="intake-container">
+                <form>
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="background">Background in Physical Disciplines or Movement</label>
+                        <textarea id="background" rows="3" placeholder="Briefly detail any martial arts, sports, or movement backgrounds..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="intent">Primary Objective</label>
+                        <select id="intent" required>
+                            <option value="" disabled selected>Select your objective</option>
+                            <option value="mechanics">Master spatial geometry & biomechanics</option>
+                            <option value="sparring">Pressure-test defensive structure</option>
+                            <option value="discipline">Rigorous physical and mental conditioning</option>
+                        </select>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="codecheck" required>
+                        <label for="codecheck">I acknowledge the Code of the Floor: I agree to check my ego at the door, fight honorably, give honest reads to my partners, and strictly prioritize safety.</label>
+                    </div>
+                    <button type="submit" class="btn">Submit Intake Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Basic Geometry Swordplay. All rights reserved. Step into the lab.</p>
+    </footer>
+
+</body>
+</html>
