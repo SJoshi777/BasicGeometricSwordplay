@@ -397,18 +397,18 @@
             <p class="section-desc">We vet applicants to ensure alignment with our training philosophy. Submit your details to request an entry evaluation.</p>
 
             <div class="intake-container">
-                <form>
+                <form action="https://formspree.io/f/xbdnywjj" method="POST">
                     <div class="form-group">
                         <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" placeholder="Enter your full name" required>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
                     </div>
                     <div class="form-group">
                         <label for="background">Background in Physical Disciplines or Movement</label>
-                        <textarea id="background" rows="3" placeholder="Briefly detail any martial arts, sports, or movement backgrounds..." required></textarea>
+                        <textarea id="background" name="background" rows="3" placeholder="Briefly detail any martial arts, sports, or movement backgrounds..." required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="intent">Primary Objective</label>
-                        <select id="intent" required>
+                        <select id="intent" name="intent" required>
                             <option value="" disabled selected>Select your objective</option>
                             <option value="mechanics">Master spatial geometry & biomechanics</option>
                             <option value="sparring">Pressure-test defensive structure</option>
@@ -416,7 +416,7 @@
                         </select>
                     </div>
                     <div class="checkbox-group">
-                        <input type="checkbox" id="codecheck" required>
+                        <input type="checkbox" id="codecheck" name="code_acknowledged" value="agreed" required>
                         <label for="codecheck">I acknowledge the Code of the Floor: I agree to check my ego at the door, fight honorably, give honest reads to my partners, and strictly prioritize safety.</label>
                     </div>
                     <button type="submit" class="btn">Submit Intake Application</button>
