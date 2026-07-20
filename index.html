@@ -1,9 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Geometry Swordplay | BGS Master Sheet & Curriculum</title>
+    <title>Basic Geometry Swordplay | Master Sheet & Curriculum</title>
     <style>
         :root {
             --bg-color: #0b0b0c;
@@ -11,11 +12,9 @@
             --border-color: #27272a;
             --text-primary: #f4f4f5;
             --text-secondary: #a1a1aa;
-            --crimson: #dc2626;
-            --crimson-hover: #b91c1c;
-            --white-tab: #ffffff;
-            --grey-tab: #71717a;
-            --olive-tab: #3f6212;
+            --accent-color: #dc2626;
+            --accent-hover: #b91c1c;
+            --card-bg: rgba(20, 20, 22, 0.6);
         }
 
         * {
@@ -29,142 +28,111 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
+            padding: 2rem 5%;
         }
 
-        /* Navigation */
         header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
+            align-items: flex-end;
             border-bottom: 1px solid var(--border-color);
-            background-color: rgba(11, 11, 12, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .logo {
-            font-weight: 900;
-            letter-spacing: 3px;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-        }
-
-        .logo span {
-            color: var(--crimson);
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
+        h1 {
+            font-size: 2rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            transition: color 0.2s;
         }
 
-        nav a:hover, nav a.active {
-            color: var(--text-primary);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 8rem 0 6rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 6vw, 5.5rem);
-            font-weight: 900;
-            line-height: 1.05;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 span {
-            color: var(--crimson);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
+        .subtitle {
             color: var(--text-secondary);
-            max-width: 650px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
             margin-bottom: 2.5rem;
         }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--crimson);
-            color: white;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.9rem;
-            transition: background-color 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: var(--crimson-hover);
-        }
-
-        /* Section Styling */
-        section {
-            padding: 6rem 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .section-desc {
+        .tab-btn {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
             color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 4rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
         }
 
-        /* Grid Layouts */
-        .grid-3 {
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        p.section-intro {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         .card {
-            background-color: var(--surface-color);
+            background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 2.5rem;
+            border-radius: 6px;
+            padding: 1.5rem;
             transition: border-color 0.2s ease;
         }
 
         .card:hover {
-            border-color: var(--crimson);
+            border-color: var(--accent-color);
         }
 
         .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.1rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
         }
 
         .card p {
@@ -172,490 +140,163 @@
             font-size: 0.95rem;
         }
 
-        /* Video Demo Placeholders */
-        .video-placeholder {
-            width: 100%;
-            height: 180px;
-            background-color: var(--bg-color);
-            border: 1px dashed var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 1.5rem;
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        ul, ol {
+            padding-left: 1.25rem;
             color: var(--text-secondary);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            position: relative;
         }
 
-        .video-placeholder::before {
-            content: "▶";
-            margin-right: 8px;
-            color: var(--crimson);
-            font-size: 1rem;
-        }
-
-        /* Interactive Tier Accordion / Matrix Ranks */
-        .rank-row {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 1.5rem 2rem;
-            margin-bottom: 1rem;
-            transition: border-color 0.2s ease;
-            cursor: pointer;
-        }
-
-        .rank-row:hover {
-            border-color: var(--crimson);
-        }
-
-        .rank-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .rank-info h4 {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 0.2rem;
-        }
-
-        .rank-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .rank-content {
-            display: none;
-            margin-top: 1.2rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .rank-row.active {
-            border-color: var(--crimson);
-        }
-
-        .rank-row.active .rank-content {
-            display: block;
-        }
-
-        .badge {
-            width: 40px;
-            height: 12px;
-            border-radius: 2px;
-            flex-shrink: 0;
-        }
-
-        .badge.white { background-color: var(--white-tab); }
-        .badge.grey { background-color: var(--grey-tab); }
-        .badge.olive { background-color: var(--olive-tab); }
-        .badge.crimson { background-color: var(--crimson); }
-
-        /* Master Sheet Table Matrix */
-        .master-table-container {
-            width: 100%;
-            overflow-x: auto;
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        table.master-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.9rem;
-        }
-
-        table.master-table th, table.master-table td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-primary);
-        }
-
-        table.master-table th {
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            background-color: var(--bg-color);
-        }
-
-        table.master-table tr:hover td {
-            background-color: rgba(220, 38, 38, 0.05);
-        }
-
-        /* Intake Modal / Form Styling */
-        .intake-container {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 3rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-secondary);
+        li {
             margin-bottom: 0.5rem;
         }
 
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 0.85rem;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--crimson);
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .checkbox-group input {
-            margin-top: 0.3rem;
-            width: auto;
-        }
-
-        .checkbox-group label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            text-transform: none;
-            letter-spacing: normal;
-        }
-
-        /* Footer */
         footer {
-            padding: 4rem 5%;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
             text-align: center;
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-            letter-spacing: 1px;
+            font-size: 0.8rem;
             text-transform: uppercase;
-        }
-
-        @media (max-width: 768px) {
-            nav { display: none; }
-            .hero { padding: 4rem 0; }
+            letter-spacing: 1.5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navigation -->
     <header>
-        <div class="logo">BGS<span>.LAB</span></div>
-        <nav>
-            <a href="#hero" class="active">Overview</a>
-            <a href="#system">The System</a>
-            <a href="#matrix">Ranks</a>
-            <a href="#matchups">Matchups</a>
-            <a href="#mastersheet">Master Sheet</a>
-            <a href="#code">Code</a>
-            <a href="#trial">Intake</a>
-        </nav>
+        <div>
+            <h1>Basic Geometry Swordplay</h1>
+        </div>
+        <div class="subtitle">System Master Sheet & Curriculum Mockup</div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="container">
-            <h1>The blade <br><span>doesn't lie.</span></h1>
-            <p>No ancient mystic traditions. No wasted movement. Basic Geometry Swordplay strips away dogma and isolates the raw physics of steel: angles, momentum, and timing.</p>
-            <a href="#trial" class="btn">Enter the Laboratory</a>
-        </div>
-    </section>
+    <!-- Tab Navigation Bar -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(event, 'vectors')">Vectors & Chambers</button>
+        <button class="tab-btn" onclick="switchTab(event, 'flows')">Flow Lines</button>
+        <button class="tab-btn" onclick="switchTab(event, 'drills')">Partner Drills</button>
+        <button class="tab-btn" onclick="switchTab(event, 'curriculum')">Rank Curriculum</button>
+    </div>
 
-    <!-- The Foundation Section -->
-    <section id="system">
-        <div class="container">
-            <h2 class="section-title">The Foundation</h2>
-            <p class="section-desc">Combat is a spatial equation. We optimize your structure to ensure absolute mechanical efficiency.</p>
-            
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Form Over Force</h3>
-                    <p>Power originates from skeletal alignment and geometric leverage rather than brute muscle tension. Structure always precedes speed.</p>
-                    <div class="video-placeholder">Vector Alignment Demo</div>
-                </div>
-                <div class="card">
-                    <h3>Dynamic Deflection</h3>
-                    <p>We do not build rigid walls to stop oncoming momentum. We leverage active angles to split vectors and redirect kinetic force cleanly past us.</p>
-                    <div class="video-placeholder">Kinetic Slip Demo</div>
-                </div>
-                <div class="card">
-                    <h3>Economy of Motion</h3>
-                    <p>In combat, a straight line is a weapon. We eliminate telegraphic wind-ups and wasted inches to strike with absolute computational precision.</p>
-                    <div class="video-placeholder">Linear Strike Demo</div>
-                </div>
+    <!-- Section 1: Vectors & Chambers -->
+    <div id="vectors" class="content-section active">
+        <h2>Foundational Vectors (Striking Angles)</h2>
+        <p class="section-intro">All strikes in BGS follow strict geometric paths ensuring perfect edge alignment and follow-through.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Vectors 1 & 2</h3>
+                <p><strong>Diagonal Descending Cuts (45°):</strong> Slash from shoulder to opposite hip. Primary engagement paths.</p>
+            </div>
+            <div class="card">
+                <h3>Vectors 3 & 4</h3>
+                <p><strong>Horizontal Sweeps (90°):</strong> Parallel midsection cuts driven by explosive hip rotation.</p>
+            </div>
+            <div class="card">
+                <h3>Vectors 5 & 6</h3>
+                <p><strong>Diagonal Ascending Cuts (135°):</strong> Low-line strikes targeting wrists, flanks, and floating ribs.</p>
+            </div>
+            <div class="card">
+                <h3>Vectors 7 & 8</h3>
+                <p><strong>Vertical Axes (0° / 180°):</strong> Direct overhead cleave and linear centerline thrust.</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- The Matrix Ranks Section -->
-    <section id="matrix">
-        <div class="container">
-            <h2 class="section-title">The Matrix Ranks</h2>
-            <p class="section-desc">Progress tracked systematically through modular tactical belt identifiers and rigorous gate checks. Click any tier below to view its complete operational outline.</p>
-
-            <!-- Tier 1 -->
-            <div class="rank-row" onclick="toggleRank(this)">
-                <div class="rank-header">
-                    <div class="rank-info">
-                        <h4>Tier 1: Mechanics</h4>
-                        <p>Focus on solo forms, air-tracking vectors, and baseline footwork layout.</p>
-                    </div>
-                    <div class="badge white"></div>
-                </div>
-                <div class="rank-content">
-                    <p><strong>Outline & Objectives:</strong></p>
-                    <ul style="margin-left: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                        <li>Master spatial geometry, balance, and pure linear/diagonal footwork without resistance.</li>
-                        <li>Clean execution of primary 8-point cutting and thrusting vectors.</li>
-                        <li>Flawless solo form demonstrating absolute skeletal alignment and balance recovery.</li>
-                    </ul>
-                    <div class="video-placeholder" style="max-width: 400px;">Tier 1 Form Breakdown</div>
-                </div>
+    <!-- Section 2: Flow Lines -->
+    <div id="flows" class="content-section">
+        <h2>Kinetic Flow Lines</h2>
+        <p class="section-intro">Transitions eliminate dead weight by using the momentum of the previous strike to chamber the next.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>The Figure-8 Loop</h3>
+                <p>Continuous looping motion utilizing centrifugal force to maintain high-velocity threat presence without re-chambering.</p>
             </div>
-
-            <!-- Tier 2 -->
-            <div class="rank-row" onclick="toggleRank(this)">
-                <div class="rank-header">
-                    <div class="rank-info">
-                        <h4>Tier 2: Contact</h4>
-                        <p>Introduction to distance management, weapon-on-weapon impact, and kinetic deflection.</p>
-                    </div>
-                    <div class="badge grey"></div>
-                </div>
-                <div class="rank-content">
-                    <p><strong>Outline & Objectives:</strong></p>
-                    <ul style="margin-left: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                        <li>Absorb and redirect live steel impact without breaking structural posture.</li>
-                        <li>Timed defensive parries and controlled counter-strikes against baseline attacks.</li>
-                        <li>90-second continuous pressure drill maintaining distance management under light resistance.</li>
-                    </ul>
-                    <div class="video-placeholder" style="max-width: 400px;">Tier 2 Contact Drill</div>
-                </div>
+            <div class="card">
+                <h3>The Pendulum Shift</h3>
+                <p>Reversing cutting direction mid-arc using wrist articulation and sudden footwork changes to bypass guards.</p>
             </div>
-
-            <!-- Tier 3 -->
-            <div class="rank-row" onclick="toggleRank(this)">
-                <div class="rank-header">
-                    <div class="rank-info">
-                        <h4>Tier 3: Tactics</h4>
-                        <p>Advanced multi-directional threat profiles and medium-speed technical engagement.</p>
-                    </div>
-                    <div class="badge olive"></div>
-                </div>
-                <div class="rank-content">
-                    <p><strong>Outline & Objectives:</strong></p>
-                    <ul style="margin-left: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                        <li>Transition fluidly from defense to offense using minimum viable motion.</li>
-                        <li>Intercepting compound attacks and exploiting geometric openings in an opponent's guard.</li>
-                        <li>Controlled technical sparring session demonstrating tactical adaptability against varying weapons.</li>
-                    </ul>
-                    <div class="video-placeholder" style="max-width: 400px;">Tier 3 Sparring Matrix</div>
-                </div>
-            </div>
-
-            <!-- Tier 4 -->
-            <div class="rank-row" onclick="toggleRank(this)">
-                <div class="rank-header">
-                    <div class="rank-info">
-                        <h4>Tier 4: Systems Master (Gate Check)</h4>
-                        <p>Full operational freedom, competitive sparring, and high-speed live pressure testing.</p>
-                    </div>
-                    <div class="badge crimson"></div>
-                </div>
-                <div class="rank-content">
-                    <p><strong>Outline & Objectives:</strong></p>
-                    <ul style="margin-left: 1.2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">
-                        <li>Intuitive mastery of spatial geometry under maximum speed and psychological pressure.</li>
-                        <li>Flawless instinctive adaptation to unpredictable, multi-angle assaults.</li>
-                        <li>Mandatory Gate Check: Passing both the Blind Vector Test and the Asymmetric Gauntlet.</li>
-                    </ul>
-                    <div class="video-placeholder" style="max-width: 400px;">Tier 4 Gauntlet Test</div>
-                </div>
+            <div class="card">
+                <h3>The Dead-Zone Pivot</h3>
+                <p>Stepping off the line of attack while letting the blade rotate through the opponent's blind sector.</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Specific Weapon Matchup Modules -->
-    <section id="matchups">
-        <div class="container">
-            <h2 class="section-title">Weapon Matchup Modules</h2>
-            <p class="section-desc">Detailed tactical geometry protocols for mismatched weapon profiles on the floor.</p>
-
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Longsword vs. Arming Sword</h3>
-                    <p><strong>Geometric Advantage:</strong> Reach and leverage projection.</p>
-                    <p style="margin-top: 0.8rem;"><strong>Tactical Adaptation:</strong> The shorter arming sword must break the outer radius via compressed angular stepping, nullifying the longsword's lever advantage close-in.</p>
-                    <div class="video-placeholder">Matchup Breakdown</div>
-                </div>
-                <div class="card">
-                    <h3>Shield / Buckler vs. Two-Hander</h3>
-                    <p><strong>Geometric Advantage:</strong> Central vector shielding and dynamic crowding.</p>
-                    <p style="margin-top: 0.8rem;"><strong>Tactical Adaptation:</strong> Absorb the downward momentum at a 45-degree angle off-center, collapsing the distance before the heavy weapon can reset its arc.</p>
-                    <div class="video-placeholder">Matchup Breakdown</div>
-                </div>
-                <div class="card">
-                    <h3>Asymmetric Dagger vs. Saber</h3>
-                    <p><strong>Geometric Advantage:</strong> Extreme close-quarters entry and velocity.</p>
-                    <p style="margin-top: 0.8rem;"><strong>Tactical Adaptation:</strong> Bypass the cutting sweep entirely by hugging the inner dead-zone vector where the saber's leverage cannot pivot back.</p>
-                    <div class="video-placeholder">Matchup Breakdown</div>
-                </div>
+    <!-- Section 3: Partner Drills -->
+    <div id="drills" class="content-section">
+        <h2>Partner Calibration Drills</h2>
+        <p class="section-intro">Structured live-feedback exercises designed to test structural integrity and reaction timing.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>The Deflection Triangle</h3>
+                <p>Partner throws predictable vector sequences; defender utilizes minimum-angle deflection to pass force past the shoulder.</p>
+            </div>
+            <div class="card">
+                <h3>Distance Tagging</h3>
+                <p>Controlled sparring focusing strictly on maintaining the optimal outer radius threshold without over-committing.</p>
+            </div>
+            <div class="card">
+                <h3>Blind Vector Test</h3>
+                <p>Defender reacts to auditory or tactile cues, executing pre-programmed geometric parries without visual tracking.</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Master Sheet Section -->
-    <section id="mastersheet">
-        <div class="container">
-            <h2 class="section-title">BGS Master Sheet</h2>
-            <p class="section-desc">Comprehensive structural overview mapping out system tiers, telemetry metrics, and core gate criteria at a glance for the martial art.</p>
-
-            <div class="master-table-container">
-                <table class="master-table">
-                    <thead>
-                        <tr>
-                            <th>Tier Level</th>
-                            <th>Belt Identifier</th>
-                            <th>Core Focus</th>
-                            <th>Primary Vector Metric</th>
-                            <th>Gate Check Requirement</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Tier 1</strong></td>
-                            <td><span style="display:inline-block; width:12px; height:12px; background:#fff; margin-right:6px; border-radius:2px;"></span> White</td>
-                            <td>Mechanics & Footwork</td>
-                            <td>8-Point cutting and linear progression</td>
-                            <td>Flawless solo form & balance recovery</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tier 2</strong></td>
-                            <td><span style="display:inline-block; width:12px; height:12px; background:#71717a; margin-right:6px; border-radius:2px;"></span> Grey</td>
-                            <td>Contact & Deflection</td>
-                            <td>Weapon-on-weapon impact absorption</td>
-                            <td>90-second continuous pressure drill</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tier 3</strong></td>
-                            <td><span style="display:inline-block; width:12px; height:12px; background:#3f6212; margin-right:6px; border-radius:2px;"></span> Olive</td>
-                            <td>Tactics & Adaptation</td>
-                            <td>Compound attack interception</td>
-                            <td>Controlled technical sparring session</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tier 4</strong></td>
-                            <td><span style="display:inline-block; width:12px; height:12px; background:#dc2626; margin-right:6px; border-radius:2px;"></span> Crimson</td>
-                            <td>Systems Master</td>
-                            <td>Unpredictable multi-angle assault adaptation</td>
-                            <td>Blind Vector Test & Asymmetric Gauntlet</td>
-                        </tr>
-                    </tbody>
-                </table>
+    <!-- Section 4: Rank Curriculum -->
+    <div id="curriculum" class="content-section">
+        <h2>BGS Belt & Rank Standards</h2>
+        <p class="section-intro">The structured matrix required to progress through the BGS laboratory system.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3><span class="highlight">White</span> — Tier 1: Mechanics</h3>
+                <p>Mastery of solo forms, 8-point vector tracking, and clean linear/diagonal footwork mechanics.</p>
+            </div>
+            <div class="card">
+                <h3><span class="highlight">Grey</span> — Tier 2: Contact</h3>
+                <p>Introduction to weapon-on-weapon impact, kinetic deflection, and 90-second continuous pressure drills.</p>
+            </div>
+            <div class="card">
+                <h3><span class="highlight">Olive</span> — Tier 3: Tactics</h3>
+                <p>Compound attack interception, weapon mismatch adaptation, and technical sparring integration.</p>
+            </div>
+            <div class="card">
+                <h3><span class="highlight">Crimson</span> — Tier 4: Systems Master</h3>
+                <p>Absolute spatial intuition under maximum pressure. Passing the Asymmetric Gauntlet gate check.</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Code of the Floor -->
-    <section id="code">
-        <div class="container">
-            <h2 class="section-title">Code of the Floor</h2>
-            <p class="section-desc">Strict operational boundaries to maintain intensity, structure, and physical safety.</p>
-
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Check the Ego</h3>
-                    <p>Your belt rank will not deflect a real vector. If you are here to posture, you are in the wrong room. If you are here to debug your guard, you are home.</p>
-                </div>
-                <div class="card">
-                    <h3>Clean Engagement</h3>
-                    <p>We fight honorably because chaos is loud enough on its own. Give your partner an honest read, accept clean hits without complaint, and protect your training partner's safety above your own desire to win.</p>
-                </div>
-                <div class="card">
-                    <h3>Muzzle Control</h3>
-                    <p>Treat every training tool with respect. Never point a live vector or tip toward anyone off-mat or un-geared. Keep lines down when instructors speak.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- High-Intent Trial / Intake Section -->
-    <section id="trial">
-        <div class="container">
-            <h2 class="section-title">Laboratory Access</h2>
-            <p class="section-desc">We vet applicants to ensure alignment with our training philosophy. Submit your details to request an entry evaluation.</p>
-
-            <div class="intake-container">
-                <form action="https://formspree.io/f/xbdnywjj" method="POST">
-                    <div class="form-group">
-                        <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="background">Background in Physical Disciplines or Movement</label>
-                        <textarea id="background" name="background" rows="3" placeholder="Briefly detail any martial arts, sports, or movement backgrounds..." required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="intent">Primary Objective</label>
-                        <select id="intent" name="intent" required>
-                            <option value="" disabled selected>Select your objective</option>
-                            <option value="mechanics">Master spatial geometry & biomechanics</option>
-                            <option value="sparring">Pressure-test defensive structure</option>
-                            <option value="discipline">Rigorous physical and mental conditioning</option>
-                        </select>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="codecheck" name="code_acknowledged" value="agreed" required>
-                        <label for="codecheck">I acknowledge the Code of the Floor: I agree to check my ego at the door, fight honorably, give honest reads to my partners, and strictly prioritize safety.</label>
-                    </div>
-                    <button type="submit" class="btn">Submit Intake Application</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Basic Geometry Swordplay. All rights reserved. Step into the lab.</p>
+        &copy; 2026 Basic Geometry Swordplay. All rights reserved. Step into the lab.
     </footer>
 
-    <!-- Interactive Script -->
+    <!-- Interactive Script for Tab Switching -->
     <script>
-        function toggleRank(element) {
-            element.classList.toggle('active');
+        function switchTab(evt, tabName) {
+            // Hide all content sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show current target section and add active class to clicked button
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
         }
     </script>
 
 </body>
 </html>
+
+```
