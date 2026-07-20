@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +37,8 @@
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 1.5rem;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         h1 {
@@ -53,17 +54,620 @@
             letter-spacing: 1px;
         }
 
+        /* Search Bar & Controls Bar */
+        .controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            width: 300px;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-color);
+        }
+
         /* Tabs Navigation */
         .tabs {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
-            margin-bottom: 2.5rem;
         }
 
         .tab-btn {
             background-color: var(--surface-color);
             border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.75rem 1.25rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border-color: var(--accent-color);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        p.section-intro {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            transition: border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-btn {
+            background: transparent;
+            border: 1px dashed var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            margin-top: auto;
+        }
+
+        .video-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--text-primary);
+            background-color: rgba(220, 38, 38, 0.05);
+        }
+
+        .video-btn span {
+            color: var(--accent-color);
+        }
+
+        /* Applicant Status Tracker Styles */
+        .tracker-container {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        .tracker-form {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tracker-form input, .tracker-form select {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .tracker-form input { flex: 2; min-width: 200px; }
+        .tracker-form select { flex: 1; min-width: 150px; }
+
+        .btn-action {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-action:hover {
+            background-color: var(--accent-hover);
+        }
+
+        table.tracker-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        table.tracker-table th, table.tracker-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        table.tracker-table th {
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            background-color: var(--bg-color);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 3px;
+        }
+
+        .status-eval { background-color: #3f6212; color: #ecfccb; }
+        .status-tier1 { background-color: #27272a; color: #f4f4f5; }
+        .status-tier2 { background-color: #71717a; color: #ffffff; }
+        .status-master { background-color: var(--accent-color); color: #ffffff; }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 700px;
+            padding: 2rem;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: none; border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .video-frame-mock {
+            width: 100%;
+            height: 350px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+        }
+
+        .play-icon-large {
+            font-size: 3rem;
+            color: var(--accent-color);
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        ul, ol {
+            padding-left: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        @media(max-width: 768px) {
+            .controls-bar { flex-direction: column; align-items: stretch; }
+            .search-input { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>Basic Geometry Swordplay</h1>
+        </div>
+        <div class="subtitle">System Master Sheet & Curriculum Mockup</div>
+    </header>
+
+    <!-- Controls Bar: Search & Tabs -->
+    <div class="controls-bar">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab(event, 'vectors')">Vectors & Chambers</button>
+            <button class="tab-btn" onclick="switchTab(event, 'flows')">Flow Lines</button>
+            <button class="tab-btn" onclick="switchTab(event, 'drills')">Partner Drills</button>
+            <button class="tab-btn" onclick="switchTab(event, 'curriculum')">Rank Curriculum</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tracker')">Applicant Tracker</button>
+        </div>
+        <div>
+            <input type="text" id="globalSearch" class="search-input" placeholder="Search curriculum database..." onkeyup="filterContent()">
+        </div>
+    </div>
+
+    <!-- Section 1: Vectors & Chambers -->
+    <div id="vectors" class="content-section active">
+        <h2>Foundational Vectors (Striking Angles)</h2>
+        <p class="section-intro">All strikes in BGS follow strict geometric paths ensuring perfect edge alignment and follow-through.</p>
+        
+        <div class="grid searchable-grid">
+            <div class="card searchable-card" data-keywords="vectors 1 2 diagonal descending cuts 45 shoulder hip engagement">
+                <div>
+                    <h3>Vectors 1 & 2</h3>
+                    <p><strong>Diagonal Descending Cuts (45°):</strong> Slash from shoulder to opposite hip. Primary engagement paths.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Vectors 1 & 2: Biomechanical Slow-Mo Breakdown')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+            <div class="card searchable-card" data-keywords="vectors 3 4 horizontal sweeps 90 midsection cuts hip rotation">
+                <div>
+                    <h3>Vectors 3 & 4</h3>
+                    <p><strong>Horizontal Sweeps (90°):</strong> Parallel midsection cuts driven by explosive hip rotation.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Vectors 3 & 4: Hip Torque Mechanics')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+            <div class="card searchable-card" data-keywords="vectors 5 6 diagonal ascending cuts 135 low-line wrists flanks ribs">
+                <div>
+                    <h3>Vectors 5 & 6</h3>
+                    <p><strong>Diagonal Ascending Cuts (135°):</strong> Low-line strikes targeting wrists, flanks, and floating ribs.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Vectors 5 & 6: Low-Line Entry Demonstration')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+            <div class="card searchable-card" data-keywords="vectors 7 8 vertical axes 0 180 overhead cleave linear centerline thrust">
+                <div>
+                    <h3>Vectors 7 & 8</h3>
+                    <p><strong>Vertical Axes (0° / 180°):</strong> Direct overhead cleave and linear centerline thrust.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Vectors 7 & 8: Centerline Piercing Drill')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Flow Lines -->
+    <div id="flows" class="content-section">
+        <h2>Kinetic Flow Lines</h2>
+        <p class="section-intro">Transitions eliminate dead weight by using the momentum of the previous strike to chamber the next.</p>
+        
+        <div class="grid searchable-grid">
+            <div class="card searchable-card" data-keywords="figure-8 loop continuous looping centrifugal force momentum">
+                <div>
+                    <h3>The Figure-8 Loop</h3>
+                    <p>Continuous looping motion utilizing centrifugal force to maintain high-velocity threat presence without re-chambering.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Flow Line: Continuous Figure-8 Loop')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+            <div class="card searchable-card" data-keywords="pendulum shift reversing cutting direction mid-arc wrist articulation footwork">
+                <div>
+                    <h3>The Pendulum Shift</h3>
+                    <p>Reversing cutting direction mid-arc using wrist articulation and sudden footwork changes to bypass guards.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Flow Line: Pendulum Shift Mechanics')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+            <div class="card searchable-card" data-keywords="dead-zone pivot stepping off line attack opponent blind sector">
+                <div>
+                    <h3>The Dead-Zone Pivot</h3>
+                    <p>Stepping off the line of attack while letting the blade rotate through the opponent's blind sector.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Flow Line: Dead-Zone Pivot Execution')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Partner Drills -->
+    <div id="drills" class="content-section">
+        <h2>Partner Calibration Drills</h2>
+        <p class="section-intro">Structured live-feedback exercises designed to test structural integrity and reaction timing.</p>
+        
+        <div class="grid searchable-grid">
+            <div class="card searchable-card" data-keywords="deflection triangle predictable vector sequences minimum-angle deflection force">
+                <div>
+                    <h3>The Deflection Triangle</h3>
+                    <p>Partner throws predictable vector sequences; defender utilizes minimum-angle deflection to pass force past the shoulder.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Partner Drill: Deflection Triangle Setup')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+            <div class="card searchable-card" data-keywords="distance tagging controlled sparring outer radius threshold">
+                <div>
+                    <h3>Distance Tagging</h3>
+                    <p>Controlled sparring focusing strictly on maintaining the optimal outer radius threshold without over-committing.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Partner Drill: Distance Tagging Sparring')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+            <div class="card searchable-card" data-keywords="blind vector test auditory tactile cues pre-programmed parries">
+                <div>
+                    <h3>Blind Vector Test</h3>
+                    <p>Defender reacts to auditory or tactile cues, executing pre-programmed geometric parries without visual tracking.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Partner Drill: Blind Vector Test Simulation')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: Rank Curriculum -->
+    <div id="curriculum" class="content-section">
+        <h2>BGS Belt & Rank Standards</h2>
+        <p class="section-intro">The structured matrix required to progress through the BGS laboratory system.</p>
+        
+        <div class="grid searchable-grid">
+            <div class="card searchable-card" data-keywords="white tier 1 mechanics mastery solo forms 8-point vector tracking footwork">
+                <div>
+                    <h3><span class="highlight">White</span> — Tier 1: Mechanics</h3>
+                    <p>Mastery of solo forms, 8-point vector tracking, and clean linear/diagonal footwork mechanics.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Curriculum: Tier 1 Evaluation Standards')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+            <div class="card searchable-card" data-keywords="grey tier 2 contact weapon-on-weapon impact kinetic deflection pressure drills">
+                <div>
+                    <h3><span class="highlight">Grey</span> — Tier 2: Contact</h3>
+                    <p>Introduction to weapon-on-weapon impact, kinetic deflection, and 90-second continuous pressure drills.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Curriculum: Tier 2 Evaluation Standards')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+            <div class="card searchable-card" data-keywords="olive tier 3 tactics compound attack interception weapon mismatch technical sparring">
+                <div>
+                    <h3><span class="highlight">Olive</span> — Tier 3: Tactics</h3>
+                    <p>Compound attack interception, weapon mismatch adaptation, and technical sparring integration.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Curriculum: Tier 3 Evaluation Standards')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+            <div class="card searchable-card" data-keywords="crimson tier 4 systems master spatial intuition pressure asymmetric gauntlet">
+                <div>
+                    <h3><span class="highlight">Crimson</span> — Tier 4: Systems Master</h3>
+                    <p>Absolute spatial intuition under maximum pressure. Passing the Asymmetric Gauntlet gate check.</p>
+                </div>
+                <button class="video-btn" onclick="openModal('Curriculum: Tier 4 Evaluation Standards')"><span>▶</span> Watch Slo-Mo Analysis</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 5: Applicant Status Tracker -->
+    <div id="tracker" class="content-section">
+        <h2>Applicant Status Tracker</h2>
+        <p class="section-intro">Instructor portal to log, track, and update applicant progression tiers in real time.</p>
+
+        <div class="tracker-container">
+            <div class="tracker-form">
+                <input type="text" id=" applicantName" placeholder="Candidate Full Name...">
+                <select id="applicantTier">
+                    <option value="Evaluation Phase">Evaluation Phase</option>
+                    <option value="Tier 1: Mechanics">Tier 1: Mechanics</option>
+                    <option value="Tier 2: Contact">Tier 2: Contact</option>
+                    <option value="Tier 3: Tactics">Tier 3: Tactics</option>
+                    <option value="Systems Master">Systems Master</option>
+                </select>
+                <button class="btn-action" onclick="addApplicant()">Add Applicant</button>
+            </div>
+
+            <table class="tracker-table">
+                <thead>
+                    <tr>
+                        <th>Candidate Name</th>
+                        <th>Current Tier Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="applicantTableBody">
+                    <tr>
+                        <td>Marcus Vance</td>
+                        <td><span class="status-badge status-tier2">Tier 2: Contact</span></td>
+                        <td><button class="btn-action" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;" onclick="removeRow(this)">Remove</button></td>
+                    </tr>
+                    <tr>
+                        <td>Elena Rostova</td>
+                        <td><span class="status-badge status-eval">Evaluation Phase</span></td>
+                        <td><button class="btn-action" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;" onclick="removeRow(this)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Video Modal Player Overlay -->
+    <div id="videoModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 id="modalTitle" style="color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; font-size: 1.2rem;">Video Demonstration</h3>
+            <div class="video-frame-mock">
+                <div class="play-icon-large">▶</div>
+                <div id="modalVideoText">Streaming High-Definition Biomechanical Feed...</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Basic Geometry Swordplay. All rights reserved. Step into the lab.
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        function switchTab(evt, tabName) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Live Technique Filtering Search Bar
+        function filterContent() {
+            let input = document.getElementById('globalSearch').value.toLowerCase();
+            let cards = document.querySelectorAll('.searchable-card');
+
+            cards.forEach(card => {
+                let keywords = card.getAttribute('data-keywords') || "";
+                let text = card.textContent.toLowerCase();
+                if (text.includes(input) || keywords.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // Interactive Video Modal Player
+        function openModal(title) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('videoModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('videoModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            let modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Applicant Status Tracker Logic
+        function addApplicant() {
+            let nameInput = document.getElementById('applicantName');
+            let tierSelect = document.getElementById('applicantTier');
+            let tbody = document.getElementById('applicantTableBody');
+
+            if (nameInput.value.trim() === "") {
+                alert("Please enter a candidate name.");
+                return;
+            }
+
+            let badgeClass = "status-eval";
+            let tierVal = tierSelect.value;
+            if(tierVal.includes("Tier 1")) badgeClass = "status-tier1";
+            else if(tierVal.includes("Tier 2") || tierVal.includes("Tier 3")) badgeClass = "status-tier2";
+            else if(tierVal.includes("Master")) badgeClass = "status-master";
+
+            let newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${nameInput.value}</td>
+                <td><span class="status-badge ${badgeClass}">${tierVal}</span></td>
+                <td><button class="btn-action" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;" onclick="removeRow(this)">Remove</button></td>
+            `;
+
+            tbody.appendChild(newRow);
+            nameInput.value = "";
+        }
+
+        function removeRow(button) {
+            let row = button.closest('tr');
+            row.remove();
+        }
+    </script>
+
+</body>
+</html>            border: 1px solid var(--border-color);
             color: var(--text-secondary);
             padding: 0.75rem 1.25rem;
             font-size: 0.85rem;
@@ -297,6 +901,3 @@
     </script>
 
 </body>
-</html>
-
-```
